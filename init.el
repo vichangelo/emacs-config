@@ -22,15 +22,6 @@
   (setq use-package-always-ensure t
         use-package-expand-minimally t))
 
-(use-package auto-package-update
-  :custom
-  (auto-package-update-interval 7)
-  (auto-package-update-prompt-before-update t)
-  (auto-package-update-hide-results t)
-  :config
-  (auto-package-update-maybe)
-  (auto-package-update-at-time "09:00"))
-
 (use-package better-defaults
   :ensure t)
 
@@ -113,7 +104,7 @@
 
 (use-package cov
   :ensure t
-  :hook python-mode
+  :hook (python-mode . cov-mode)
   :init
   (setq cov-lcov-patterns '("coverage.lcov"))
   (setq cov-fringe-symbol 'filled-square)
@@ -134,12 +125,6 @@
   :hook python-mode
   :init
   (setq sphinx-doc-include-types 't))
-
-(use-package magit
-  :ensure t)
-
-(use-package forge
-  :ensure t)
 
 (set-fringe-mode 10)
 (menu-bar-mode 1)
@@ -202,6 +187,6 @@
 
 (custom-set-faces
  '(default ((t
-             (:font "JetBrainsMonoNL Nerd Font" :height 113))))
+             (:font "JetBrainsMonoNL" :height 113))))
  '(swiper-line-face ((t
                       (:inherit region)))))
